@@ -1,0 +1,49 @@
+652,655c652
+<         try:
+<             self.run_stat_frequency = max(1, max_iter // 10000) if run_stat_frequency is None else run_stat_frequency
+<         except:
+<             self.run_stat_frequency = 1
+---
+>         self.run_stat_frequency = max(1, max_iter // 10000) if run_stat_frequency is None else run_stat_frequency
+885c882
+<             elif hasattr(self, 'max_iter') and self.iter == self.max_iter:
+---
+>             elif self.iter == self.max_iter:
+1149d1145
+<         last_errors = []
+1239,1245d1234
+<             #if n > 10000 and error < .001:
+<             last_errors.append(error)
+<             last_errors = last_errors[-100:]
+<             if len(last_errors) >= 10000 and _np.mean(last_errors) < 1e-7:
+<                 print(f'Quit after {n}')
+<                 break
+< 
+1511c1500
+<                  run_stat_frequency=None, skip_bound=False):
+---
+>                  run_stat_frequency=None):
+1517d1505
+<         self.skip_bound=skip_bound
+1538,1541c1526
+<         try:
+<             self.run_stat_frequency = max(1, self.max_iter // 10000) if run_stat_frequency is None else run_stat_frequency
+<         except:
+<             self.run_stat_frequency = 1
+---
+>         self.run_stat_frequency = max(1, self.max_iter // 10000) if run_stat_frequency is None else run_stat_frequency
+1544d1528
+<         if (self.skip_bound): return
+1636,1642c1620,1623
+<             else:
+<                 try:
+<                     if self.iter == self.max_iter:
+<                         if self.verbose:
+<                             print(_MSG_STOP_MAX_ITER)
+<                         break
+<                 except: pass
+---
+>             elif self.iter == self.max_iter:
+>                 if self.verbose:
+>                     print(_MSG_STOP_MAX_ITER)
+>                 break
